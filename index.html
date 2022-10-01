@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+<!--FONT LINKS of #outer, #dt, #da ----------------------------------------------------------->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;500&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+<!--BOXICONS LINKS------------------------------------------------------------------------------------------------------------------------->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<!--style.css LINKS------------------------------------------------------------------------------------------------------------------------->
+    <link rel="stylesheet" href="style.css">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"/>
+
+    <title>Study with peace</title>
+  </head>
+
+<!--BODY starting from here------------------------------------------------------------------------------------------------------------->
+  <body>
+<!--heading of the pages--->
+  <div class="ng"><a href="index1.html" target="_blank"><i class='bx bx-book-reader'></i></a><h1> |&nbsp;Study with Peace</h1></div>
+
+  
+
+    <div class="clock">
+      <div id=outer>
+        <div id=dt></div>
+       <div id=da></div>
+    </div>
+      <div class="display">
+        
+</div>
+</div>
+
+<!--Including audio in the page------------------------------------------------------------------------------------------------------------------------->
+<div class="footer">
+
+<div class="audio" > 
+  <audio controls autoplay> <source src="music1.mp3" type="" height="25px">
+    <source src="music2.mp3" type="" height="25px"></audio>
+</div>
+<!-- Adding button to make full screen website------------------------------------------------------------------------------------------------------------------------->
+<button id="btn">Go Fullscreen</button>
+</div>
+</div>
+
+
+<!--JAVASCRIPT FOR TIME--------------------->
+<script>
+      setInterval(function(){
+        const clock = document.querySelector(".display");
+        let time = new Date();
+        let sec = time.getSeconds();
+        let min = time.getMinutes();
+        let hr = time.getHours();
+        let day = 'AM';
+        if(hr > 12){
+          day = 'PM';
+          hr = hr - 12;
+        }
+        if(hr == 0){
+          hr = 12;
+        }
+        if(sec < 10){
+          sec = '0' + sec;
+        }
+        if(min < 10){
+          min = '0' + min;
+        }
+        if(hr < 10){
+          hr = '0' + hr;
+        }
+        clock.textContent = hr + ':' + min + ':' + sec + " " + day;
+      });
+    </script>
+
+
+<!--JAVASCRIPT FOR DATE------------------------------------------------------------------------------------------------------------------------->
+<script>function clock(){var date=new Date();var weekday=date.getDay();var year=date.getYear();var month=date.getMonth();var day=date.getDate();var hour=date.getHours();var minute=date.getMinutes();var second=date.getSeconds();var days=new Array ('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday' );var months=new Array('January','February','March','April','May','June','July','August','September','October','November','December');var monthname=months[month];var dayname=days[weekday];var ap;if(year<1000){year=year+1900} if(hour>=12){hour=hour-12;ap='PM'}else{ap='AM'} if(minute<10){minute='0'+minute} if(second<10){second='0'+second};
+  
+  document.getElementById('da').innerHTML=dayname;
+  document.getElementById('dt').innerHTML=monthname+' ' + day+', '+year+', ';
+  setTimeout('clock()',1000 )}window.onload=function(){clock()}
+  
+  </script>
+
+
+
+
+<!--JAVASCRIPT FOR FULLSCREEN------------------------------------------------------------------------------------------------------------------------->
+<script>
+let myDocument = document.documentElement;
+let btn = document.getElementById("btn");
+
+btn.addEventListener("click", ()=>{
+    if(btn.textContent == "Go Fullscreen"){
+        if (myDocument.requestFullscreen) {
+            myDocument.requestFullscreen();
+        } 
+        else if (myDocument.msRequestFullscreen) {
+            myDocument.msRequestFullscreen();
+        } 
+        else if (myDocument.mozRequestFullScreen) {
+            myDocument.mozRequestFullScreen();
+        }
+        else if(myDocument.webkitRequestFullscreen) {
+            myDocument.webkitRequestFullscreen();
+        }
+        btn.textContent = "Exit Fullscreen";
+    }
+    else{
+        if(document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+        else if(document.msexitFullscreen) {
+            document.msexitFullscreen();
+        }
+        else if(document.mozexitFullscreen) {
+            document.mozexitFullscreen();
+        }
+        else if(document.webkitexitFullscreen) {
+            document.webkitexitFullscreen();
+        }
+
+        btn.textContent = "Go Fullscreen";
+    }
+});
+</script>
+
+<p>© Copyright, Study with peace</p>
+
+  </body>
+</html>
